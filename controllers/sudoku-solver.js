@@ -70,7 +70,7 @@ class SudokuSolver {
       const errorObj = { error: validationRes};
       return errorObj;
     }
-    if(!(row || column) || !value, !puzzleString) {
+    if(!(row || column) || !value || !puzzleString) {
       const errorObj = { error: 'Required field(s) missing'};
       return errorObj;
     }
