@@ -9,9 +9,14 @@ module.exports = function (app) {
   app.route('/api/check')
     .post((req, res) => {
       const puzzle = req.body.puzzle;
-      const coordinate = req.body.coordinate;
       const value = req.body.value;
-      const checkResponse = solver.checkPlacement(puzzle, coordinate[0], coordinate.slice(1), value);
+      const coordinate = req.body.coordinate;
+      let row = '', col ='';
+      if(coordinate) {
+        row =  coordinate[0];
+        col = coordinate.slice(1);
+      }
+      const checkResponse = solver.checkPlacement(puzzle, row , col, value);
       res.json(checkResponse);      
     });
     
@@ -19,6 +24,6 @@ module.exports = function (app) {
     .post((req, res) => {
       const puzzle = req.body.puzzle;
       const solution = solver.solve(puzzle);
-      res.json(solution);
+      res.json(solution).then(text=> console.log(text));
     });
 };
