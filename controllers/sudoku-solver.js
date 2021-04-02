@@ -22,7 +22,7 @@ class SudokuSolver {
     const rows = this.findrows(puzzleArr).rowsObj;
     let valid = true;
 
-    if (rows[row].includes(value)) {
+    if (rows[row.toUpperCase()].includes(value)) {
       valid = false;
     } 
 
@@ -46,6 +46,7 @@ class SudokuSolver {
     const regions = this.findRegions(puzzleArr).regObj;
     let valid = true;
     let region = '';
+    row =  row.toUpperCase();
     if(['1','2','3'].includes(col) && ['A', 'B', 'C'].includes(row)) region = 'a1';
     if(['1','2','3'].includes(col) && ['D', 'E', 'F'].includes(row)) region = 'a4';
     if(['1','2','3'].includes(col) && ['G', 'H', 'I'].includes(row)) region = 'a7';
