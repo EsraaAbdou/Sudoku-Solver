@@ -12,13 +12,13 @@ module.exports = function (app) {
       const coordinate = req.body.coordinate;
       const value = req.body.value;
       const checkResponse = solver.checkPlacement(puzzle, coordinate[0], coordinate.slice(1), value);
-      res.send(checkResponse);      
+      res.json(checkResponse);      
     });
     
   app.route('/api/solve')
     .post((req, res) => {
       const puzzle = req.body.puzzle;
       const solution = solver.solve(puzzle);
-      res.send(solution);
+      res.json(solution);
     });
 };
