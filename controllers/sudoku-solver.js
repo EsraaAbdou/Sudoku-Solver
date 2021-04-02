@@ -64,13 +64,17 @@ class SudokuSolver {
   }
 
   checkPlacement(puzzleString, row, column, value) {
-    row = row.toUpperCase();
     const validationRes = this.validate(puzzleString);
-    if(validationRes != '') return validationRes;
+    console.log(validationRes)
+    if(validationRes != '') {
+      const errorObj = { error: validationRes};
+      return errorObj;
+    }
     if(!(row || column) || !value) {
       const errorObj = { error: 'Required field(s) missing'};
       return errorObj;
     }
+    row = row.toUpperCase();
     if(!'ABCDEFGHI'.split('').includes(row)) {
       const errorObj = { error: 'Invalid coordinate'};
       return errorObj;
